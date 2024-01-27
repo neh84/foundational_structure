@@ -1,0 +1,89 @@
+{
+  "endpoint": "OPENAI",
+  "model": "gpt-4-1106-preview",
+  "functions": [
+    {
+      "name": "implement_development_plan",
+      "description": "Implements the development plan.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "plan": {
+            "type": "array",
+            "description": "List of development tasks that need to be done to implement the entire plan.",
+            "items": {
+              "type": "object",
+              "description": "Development task that needs to be done to implement the entire plan.",
+              "properties": {
+                "description": {
+                  "type": "string",
+                  "description": "Description of the development task that needs to be done to implement the entire plan."
+                },
+                "programmatic_goal": {
+                  "type": "string",
+                  "description": "Detailed description of programmatic goal. Programmatic goal that will determine if a task can be marked as done from a programmatic perspective (this will result in an automated test that is run before the task is sent to you for a review). All details previously specified by user that are important for this task must be included in this programmatic goal."
+                },
+                "user_review_goal": {
+                  "type": "string",
+                  "description": "User review goal that will determine if a task is done or not, but from a user perspective since it will be reviewed by a human."
+                }
+              },
+              "required": [
+                "description",
+                "programmatic_goal",
+                "user_review_goal"
+              ]
+            }
+          }
+        },
+        "required": [
+          "plan"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "plan": [
+      {
+        "description": "Set up the GitHub repository for the AI Legal Assistant App and define the project directory structure.",
+        "programmatic_goal": "A GitHub repository named 'AI-Legal-Assistant-App' exists with folders '/server' for the backend and '/client' for the frontend.",
+        "user_review_goal": "The GitHub repository structure is reviewed and confirmed to match the required project structure. The existence of server and client directories is verified."
+      },
+      {
+        "description": "Initialize a new Node.js project in the '/server' directory and create the initial 'package.json' file.",
+        "programmatic_goal": "'package.json' exists within the '/server' directory with a valid JSON structure including project name, version, and scripts entry for starting the application.",
+        "user_review_goal": "The 'package.json' file is validated for correct initialization parameters and successful npm commands execution in the '/server' directory."
+      },
+      {
+        "description": "Install and configure Express.js in the 'server' directory to set up a basic HTTP server.",
+        "programmatic_goal": "Express.js is listed as a dependency in the 'server/package.json' file and a basic server is running on a predefined port capable of handling HTTP requests.",
+        "user_review_goal": "The backend server can be started and is verified to respond to HTTP requests, which can be confirmed via a REST client or browser."
+      },
+      {
+        "description": "Initialize the React application using 'create-react-app' in the '/client' directory.",
+        "programmatic_goal": "A React application is scaffolded in the '/client' directory with all the necessary boilerplate provided by 'create-react-app'.",
+        "user_review_goal": "The 'client' directory is reviewed to ensure the React application has been correctly initialized and runs successfully displaying the default welcome page."
+      },
+      {
+        "description": "Install ESLint and Prettier in the '/server' directory, include the necessary '.eslintrc' and '.prettierrc' configuration files.",
+        "programmatic_goal": "Both ESLint and Prettier are included in the 'devDependencies' of the 'server/package.json' file and the configuration files '.eslintrc' and '.prettierrc' are present with defined coding standards.",
+        "user_review_goal": "The coding standards implementations are reviewed by running linting and formatting tasks, ensuring no errors are present and code format consistency is applied across the server codebase."
+      },
+      {
+        "description": "Implement a basic 'Hello World' route in the Express.js backend that serves an HTML response when accessed.",
+        "programmatic_goal": "Server routes include a GET endpoint at '/' that responds with 'Hello World' in HTML format when accessed via HTTP.",
+        "user_review_goal": "A browser or REST client confirms that accessing the backend server root URL successfully displays the 'Hello World' message."
+      },
+      {
+        "description": "Create a simple React functional component that fetches and displays the 'Hello World' message from the backend upon rendering.",
+        "programmatic_goal": "The React 'App' component includes logic to fetch data from the backend '/' endpoint on component mount and renders the retrieved 'Hello World' message.",
+        "user_review_goal": "The React app is visually inspected in the browser to ensure that it displays the 'Hello World' message fetched from the backend."
+      },
+      {
+        "description": "Write a basic 'README.md' for the GitHub repository documenting setup procedures and how to run the application.",
+        "programmatic_goal": "A 'README.md' file is present in the root of the repository, containing clear instructions on how to set up and run the backend and frontend applications.",
+        "user_review_goal": "The 'README.md' is reviewed for completeness and clarity of instructions, ensuring that any new team member can follow the steps to set up and run the application."
+      }
+    ]
+  }
+}
